@@ -97,7 +97,7 @@ class LogInPage extends StatelessWidget {
                   SizedBox(
                     height: 45,
                     child: TextField(
-                      
+                      obscureText: true,
                       controller: username,
                        
                             style: TextStyle(
