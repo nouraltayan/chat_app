@@ -5,6 +5,8 @@ import 'package:projectexamui/color/color_palete.dart';
 
 TextStyle headlineTextStyle =
     TextStyle(fontSize: 24, fontWeight: FontWeight.w400,color: Colors.white);
+TextStyle headlineTextStyle1 =
+    TextStyle(fontSize: 17, fontWeight: FontWeight.w400,color: Colors.white);
 
 TextStyle styleOfSplashScreen =
     TextStyle(fontSize: 12, color: textcol,);
@@ -19,6 +21,9 @@ TextStyle styleOfSplashScreen5 =
 
   TextStyle subtitleTextStyle1 =
     const TextStyle(fontSize: 50, fontWeight: FontWeight.w900, color: Colors.white);
+
+TextStyle subtitleTextStyle9 =
+    const TextStyle(fontSize: 12,fontWeight: FontWeight.w400, color: Colors.white);
 
 
         TextStyle subtitleTextStyle2 =

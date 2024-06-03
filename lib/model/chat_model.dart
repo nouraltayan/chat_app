@@ -11,11 +11,13 @@ class ch_model {
   String image;
   String name;
   String message;
+  num unread_message_count; 
   ch_model({
     required this.date,
     required this.image,
     required this.name,
     required this.message,
+    required this.unread_message_count,
   });
 
   ch_model copyWith({
@@ -23,12 +25,14 @@ class ch_model {
     String? image,
     String? name,
     String? message,
+    num? unread_message_count,
   }) {
     return ch_model(
       date: date ?? this.date,
       image: image ?? this.image,
       name: name ?? this.name,
       message: message ?? this.message,
+      unread_message_count: unread_message_count ?? this.unread_message_count,
     );
   }
 
@@ -38,6 +42,7 @@ class ch_model {
       'image': image,
       'name': name,
       'message': message,
+      'unread_message_count': unread_message_count,
     };
   }
 
@@ -47,6 +52,7 @@ class ch_model {
       image: map['image'] as String,
       name: map['name'] as String,
       message: map['message'] as String,
+      unread_message_count: map['unread_message_count'] as num,
     );
   }
 
@@ -56,7 +62,7 @@ class ch_model {
 
   @override
   String toString() {
-    return 'ch_model(date: $date, image: $image, name: $name, message: $message)';
+    return 'ch_model(date: $date, image: $image, name: $name, message: $message, unread_message_count: $unread_message_count)';
   }
 
   @override
@@ -67,7 +73,8 @@ class ch_model {
       other.date == date &&
       other.image == image &&
       other.name == name &&
-      other.message == message;
+      other.message == message &&
+      other.unread_message_count == unread_message_count;
   }
 
   @override
@@ -75,6 +82,7 @@ class ch_model {
     return date.hashCode ^
       image.hashCode ^
       name.hashCode ^
-      message.hashCode;
+      message.hashCode ^
+      unread_message_count.hashCode;
   }
 }

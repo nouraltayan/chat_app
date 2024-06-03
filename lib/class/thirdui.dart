@@ -1,4 +1,5 @@
 // class/thirdui.dart
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:projectexamui/color/color_palete.dart';
@@ -7,14 +8,19 @@ import 'package:projectexamui/service/chat_service.dart';
 
 
 
-TextEditingController username = TextEditingController();
+TextEditingController shere = TextEditingController();
 
 
 
 
-class third extends StatelessWidget {
+class third extends StatefulWidget {
   const third({super.key});
 
+  @override
+  State<third> createState() => _thirdState();
+}
+
+class _thirdState extends State<third> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,18 +32,18 @@ class third extends StatelessWidget {
                Container(
                            width: double.maxFinite,
                            height: 150,
-                           color: Colors.black45,
+                          //  color: Color.fromARGB(115, 54, 54, 54),
                            child: Row(
                mainAxisAlignment: MainAxisAlignment.spaceAround,
                children: [
-                 CircleAvatar(backgroundColor: const Color.fromARGB(255, 58, 57, 57), child: Icon(Icons.arrow_back_ios_new_outlined,color: Colors.white,)),
+                 CircleAvatar(backgroundColor: Color.fromARGB(255, 34, 34, 34), child: Icon(Icons.arrow_back_ios_new_outlined,color: Colors.white,)),
                   Text("Invite Friends",style: headlineTextStyle,),
                  Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                    children: [
                      Padding(
                        padding: const EdgeInsets.all(8.0),
-                       child: CircleAvatar(backgroundColor: const Color.fromARGB(255, 58, 57, 57),child: Icon(Icons.delete,color: Colors.white,)),
+                       child: CircleAvatar(backgroundColor:  Color.fromARGB(255, 34, 34, 34),child: Icon(Icons.delete,color: Colors.white,)),
                      ),
                      Text("K-Supermarket\n Ruokaniity")
                    ],
@@ -63,18 +69,28 @@ class third extends StatelessWidget {
                            Padding(
               padding: const EdgeInsets.only(left: 8 ,right: 8, top:20.0),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 8),
-                    child: Align(alignment: Alignment.centerLeft, child: Text("P A S S W O R D",style: subtitleTextStyle3,)),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 18),
+                      child: Align(alignment: Alignment.center, child: Text("Invite Friends",style: headlineTextStyle,)),
+                    ),
+                  ),
+                    Padding(
+                    padding: const EdgeInsets.only(bottom: 28),
+                    child: Align(alignment: Alignment.center, child: Text("     Sign up a friend with your referral \n code and earn \$RIIDE and/or free rides.",style: subtitleTextStyle9,)),
                   ),
                   SizedBox(
                     height: 45,
                     child: TextField(
                       
-                      controller: username,
-                       
+                      controller: shere,
+                       onTap: (){
+                        
+                        print(shere);
+                       },
                       
                       decoration: InputDecoration(
                         hintText: "Share your invite code",
@@ -85,7 +101,7 @@ class third extends StatelessWidget {
                         fillColor: bottm,
                         border: OutlineInputBorder(
                         
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(12),
                         
                         ),
                       ),
@@ -100,7 +116,7 @@ class third extends StatelessWidget {
                       
                       },
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 8 ,right: 8, top:20.0),
+                        padding: const EdgeInsets.only(left: 8 ,right: 8, top:12.0),
                         child: Container(
                           alignment: Alignment.center,
                           
@@ -108,7 +124,7 @@ class third extends StatelessWidget {
                           decoration:  BoxDecoration(
                           color: bottm2,
                         
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(12),
                         
                         
                                  

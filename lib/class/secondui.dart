@@ -1,15 +1,21 @@
 // class/secondui.dart
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:projectexamui/class/rezui.dart';
 import 'package:projectexamui/class/thirdui.dart';
 import 'package:projectexamui/color/color_palete.dart';
 import 'package:projectexamui/core/res/app_text_style.dart';
+import 'package:projectexamui/model/chat_model.dart';
 import 'package:projectexamui/service/chat_service.dart';
+import 'package:badges/badges.dart' as badges;
 
 
 
 TextEditingController shea = TextEditingController();
 
+String sherac = " ";
+List<ch_model> nameshae=[];
 
 
 class secandp extends StatelessWidget {
@@ -59,39 +65,95 @@ class secandp extends StatelessWidget {
                  child: Container(
                   height: 45,
                    child: TextField(
+                    
                                  controller: shea,
                                  onChanged: (value) {
-                    // print(username.text);
+                    sherac=value;
                                  },
+                                  style: TextStyle(
+                color: Colors.white, 
+              ),
                                  decoration: InputDecoration(
-                    
-                      hintText: "Search Here",
+               
+                      hintText: "Search here",
                      hintStyle:styleOfSplashScreen6,
+                    counterStyle:styleOfSplashScreen6 ,
                       prefixIcon: Icon(Icons.search,color: bottm2,),
-                suffix: Icon(Icons.keyboard_voice_outlined,color: Colors.grey,),
-
+                suffixIcon: Icon(Icons.keyboard_voice_outlined,color: Colors.grey,),
+               
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20))),
                                ),
                  ),
                ),
-            Expanded(
-              child: FutureBuilder(
-                future :  getData(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return  ListView.builder(
-                // scrollDirection: Axis.horizontal,
-                itemCount: snapshot.data!.length,
-                itemBuilder: (context, index) => 
-                ListTile(
+             
+                Align(
+              alignment: Alignment.bottomRight,
+               child: Padding(
+                 padding: const EdgeInsets.only(top: 8.0,right: 18,
+                 bottom: 8),
+                 child: MaterialButton(onPressed: (){
+                  List<ch_model> re_sh_na = [];
+              print(chat_app);
+                  print(sherac);
+                 for (ch_model names in chat_app) {
+                print(names.message );
+                  if (names.name == sherac) {
                 
+                    re_sh_na.add(names);
+                }
+                 if (names.message == sherac) {
+                        
+                    re_sh_na.add(names);
+                }
+              }
+                 print(re_sh_na);
+                    Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Rez(chat: re_sh_na,),
                 
-                  title: Text(
-                      "${snapshot.data![index].name}",
-                      style: headlineTextStyle,
-                    ),
-                   trailing: Text(
+              ));
+                
+                 
+
+                 },
+                                child: Text("Ser_name_contan")   , color: Colors.green,textColor: Colors.white,),
+               ),
+             ),
+            FutureBuilder(
+              future :  getData(),
+              builder: (context, snapshot) {
+                
+                if (snapshot.hasData) {
+            
+                  return  Expanded(
+                       flex: 9,
+                    child: ListView.builder(
+                                    // scrollDirection: Axis.horizontal,
+                                    itemCount: snapshot.data!.length,
+                                    itemBuilder: (context, index) => 
+                                    ListTile(
+                                    
+                                      title:badges.Badge(
+                                    badgeStyle: badges.BadgeStyle(
+                      // shape: badges.BadgeShape.square,
+                      badgeColor: Colors.green,),
+                      
+                     badgeContent: Text(
+                                    snapshot.data![index].unread_message_count.toString(),
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 5,
+                                    
+                                    ),
+                                  ),
+                    child: Text(
+                        "${snapshot.data![index].name}",
+                        style: headlineTextStyle1,
+                      ),
+                                      ),
+                                       trailing: Text(
                       "${snapshot.data![index].date}",
                       style: styleOfSplashScreen,
                       
@@ -100,57 +162,33 @@ class secandp extends StatelessWidget {
                       "${snapshot.data![index].message}",
                       
                     ),
-                   leading: CircleAvatar(
-                radius: 30,
-                backgroundImage: NetworkImage(snapshot.data![index].image),
-              ),
+                                       leading: CircleAvatar(
+                                    radius: 30,
+                                    backgroundImage: NetworkImage(snapshot.data![index].image),
+                                  ),
                     ),
-              );
-                   
-                    
-                  } else {
-                    return CircularProgressIndicator(
-                      strokeWidth: 1,
-                    );
-                  }
-                },
-              ),
+                                  ),
+                  );
+                 
+                  
+                } else {
+                  return CircularProgressIndicator(
+                 
+                  );
+                }
+              },
             ),
+                Container(height :15,color: Colors.black,)
+
           ],
         ),
+        
+        
       ),
-      
-      //  ListView.builder(
-      //   // physics: BouncingScrollPhysics(),
-      //   itemCount: names.length,
-      //   itemBuilder: (context, index) {
-      //     return ListTile(
-      //       onTap: () {
-      //         ScaffoldMessenger.of(context).showSnackBar(
-      //           SnackBar(
-      //             dismissDirection: DismissDirection.horizontal,
-      //             showCloseIcon: true,
-      //             behavior: SnackBarBehavior.floating,
-      //             action: SnackBarAction(label: 'active', onPressed: () {}),
-      //             backgroundColor: Colors.green,
-      //             content: Text(
-      //               names[index],
-      //             ),
-      //           ),
-      //         );
-      //       },
-      //       leading: CircleAvatar(
-      //         child: Text((index + 1).toString()),
-      //       ),
-      //       title: Text(
-      //         names[index],
-      //       ),
-      //     );
-      //   },
-      // ),
+     
     );
   }
 }
 
 
-PageController pageController = PageController();
+

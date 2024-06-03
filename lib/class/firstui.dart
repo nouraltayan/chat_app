@@ -62,7 +62,9 @@ class LogInPage extends StatelessWidget {
                     height: 45,
                     child: TextField(
                       
-                                             
+                                 style: TextStyle(
+                color: Colors.white, 
+              ),                  
                       
                       decoration: InputDecoration(
                         hintText: "Enter your username",
@@ -98,7 +100,9 @@ class LogInPage extends StatelessWidget {
                       
                       controller: username,
                        
-                      
+                            style: TextStyle(
+                color: Colors.white, 
+              ),
                       decoration: InputDecoration(
                         hintText: "Enter your Password",
                         hintStyle:styleOfSplashScreen6 ,
